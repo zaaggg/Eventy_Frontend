@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/my-events"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="createEvent()" #eventForm="ngForm">
+    <!-- Title -->
+    <ion-item>
+      <ion-label position="floating">Event Title</ion-label>
+      <ion-input [(ngModel)]="title" name="title" required></ion-input>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="floating">Event Description</ion-label>
+      <ion-input [(ngModel)]="description" name="description" required></ion-input>
+    </ion-item>
+
+    
+    <ion-item>
+      <!-- Date <ion-label position="floating">Event Date and Time</ion-label>-->
+      <ion-datetime
+        [(ngModel)]="dateTimeInput"
+        name="dateTimeInput"
+        presentation="date-time"
+        required>
+      </ion-datetime>
+    </ion-item>
+
+    <!-- Location -->
+    <ion-item>
+      <ion-label position="floating">Event Location</ion-label>
+      <ion-input [(ngModel)]="location" name="location" required></ion-input>
+    </ion-item>
+
+    <!-- Max Participants -->
+    <ion-item>
+      <ion-label position="floating">Max Participants</ion-label>
+      <ion-input [(ngModel)]="maxParticipants" name="maxParticipants" type="number" required></ion-input>
+    </ion-item>
+
+    <!-- Price -->
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input [(ngModel)]="price" name="price" type="number" required></ion-input>
+    </ion-item>
+
+    <!-- Currency -->
+    <ion-item>
+      <ion-label position="floating">Currency</ion-label>
+      <ion-input [(ngModel)]="currency" name="currency" required></ion-input>
+    </ion-item>
+
+    <!-- Categories -->
+    <ion-item>
+      <ion-label position="floating">Categories</ion-label>
+      <ion-select [(ngModel)]="categories" name="categories"  required>
+        <ion-select-option *ngFor="let category of categoryList" [value]="category._id">
+          {{ category.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Center of Interest -->
+    <ion-item>
+      <ion-label position="floating">Center of Interest</ion-label>
+      <ion-select [(ngModel)]="centerOfInterest" name="centerOfInterest" multiple required>
+        <ion-select-option *ngFor="let interest of centerList" [value]="interest._id">
+          {{ interest.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Image Upload -->
+    <ion-item>
+      <ion-label>Upload Event Image</ion-label>
+      <input type="file" (change)="onFileChange($event)" />
+    </ion-item>
+
+    <!-- Submit Button -->
+    <ion-footer>
+      <ion-button expand="full" type="submit" [disabled]="!eventForm.form.valid">
+        Create Event
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

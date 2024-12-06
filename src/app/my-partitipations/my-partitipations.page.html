@@ -1,0 +1,45 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>My Participations</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Conditionally Show Message if No Events -->
+  <div *ngIf="!eventList?.length" class="no-events-container">
+    <h1>You are not participated in any event yet!</h1>
+  </div>
+
+  <!-- Event List -->
+  <ion-list *ngIf="eventList?.length">
+    <ion-card
+      *ngFor="let event of eventList; index as i"
+      [routerLink]="['/', 'my-partitipations', 'eventss', event?._id]"
+      class="event2"
+      [style.backgroundImage]="'url(' + event?.eventProfile + ')'"
+    >
+      <ion-item lines="none">
+        <ion-label>
+          {{ event?.dateTime?.dates?.[0]?.substring(0, 10) || '' }}
+          {{ '   ' + event?.dateTime?.times }}
+          <p>{{ event?.title }}</p>
+        </ion-label>
+
+        <ion-fab-button slot="end" size="small">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+  <!-- Create Event Button -->
+  <div class="create-event-container" *ngIf="myEventsList?.length">
+    <ion-button [routerLink]="['/create-event']" expand="block" color="primary" size="large">
+      <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+      Create Another Event
+    </ion-button>
+  </div>
+</ion-content>

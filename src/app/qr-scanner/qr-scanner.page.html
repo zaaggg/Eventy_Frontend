@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/my-events"></ion-back-button>
+    </ion-buttons>
+    <ion-title>QR Scanner</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: center; padding: 20px;">
+    <h2>Scan a QR Code</h2>
+    <!-- This div will contain the camera and scanner -->
+    <div id="reader" style="width: 300px; height: 300px; margin: auto;"></div>
+    <!-- This paragraph will display the scanned result -->
+    <p id="scan-result" style="margin-top: 20px; font-weight: bold;"></p>
+  </div>
+</ion-content>

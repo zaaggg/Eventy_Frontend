@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Email Verification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="verifyCodeForm" (ngSubmit)="verifyCode()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Enter Verification Code</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>A verification code has been sent to your email. Please enter it below to verify your account.</p>
+
+      <ion-item>
+        <ion-label position="stacked">Verification Code</ion-label>
+        <ion-input formControlName="token" placeholder="Enter the code"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="verifyCode()">Verify</ion-button>
+    </ion-card-content>
+  </ion-card>
+</form>
+</ion-content>

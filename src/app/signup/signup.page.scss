@@ -1,0 +1,10 @@
+
+  ion-item ion-label {
+    font-size: 14px; // Adjust font size as needed
+  }
+  
+  ion-label[slot="start"], ion-label[slot="end"] {
+    flex-grow: 1;
+    height: 1px;
+  }
+  

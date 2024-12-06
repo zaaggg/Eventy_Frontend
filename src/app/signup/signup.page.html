@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Reactive form binding -->
+  <form [formGroup]="signupForm" (ngSubmit)="createAccount()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Create an Account</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Name field -->
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input
+            type="text"
+            formControlName="name"
+            placeholder="Enter your name"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid">
+          <small>Name is required.</small>
+        </ion-text>
+
+        <!-- Email field -->
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+          <small *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="signupForm.get('email')?.errors?.['email']">Enter a valid email.</small>
+        </ion-text>
+
+        <!-- Phone field -->
+        <ion-item>
+          <ion-label position="stacked">Phone</ion-label>
+          <ion-input
+            type="tel"
+            formControlName="phone"
+            placeholder="Enter your phone number"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.invalid">
+          <small>Phone is required.</small>
+        </ion-text>
+
+        <!-- Password field -->
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+          <small>Password must be at least 8 characters long.</small>
+        </ion-text>
+
+        <!-- Confirm Password field -->
+        <ion-item>
+          <ion-label position="stacked">Confirm Password</ion-label>
+          <ion-input
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Confirm your password"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.hasError('passwordMismatch')">
+          <small>Passwords do not match.</small>
+        </ion-text>
+
+        <!-- Signup Button -->
+        <ion-button expand="block" type="submit" [disabled]="signupForm.invalid">Sign Up</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-content>
+  <!-- Conditionally Show Message if No Requests -->
+  <div *ngIf="!requestList?.length" class="no-requests-container">
+    <h2>You don't have any participation requests yet!</h2>
+  </div>
+
+  <!-- List of Requests -->
+  <ion-list *ngIf="requestList?.length">
+    <ion-card *ngFor="let request of requestList">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img [src]="request.user.profileImage" alt="Profile Image" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ request.user.name }}</h2>
+          <p>Email: {{ request.user.email }}</p>
+          <p>Status: {{ request.status }}</p>
+          <p>Event: {{ request.event.title }}</p>
+          <p>Location: {{ request.event.location }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-footer>
+        <ion-button
+          *ngIf="request.status === 'pending'"
+          (click)="approveRequest(request._id)"
+          color="success"
+          expand="block"
+        >
+          Approve
+        </ion-button>
+        <ion-button
+          *ngIf="request.status === 'pending'"
+          (click)="rejectRequest(request._id)"
+          color="danger"
+          expand="block"
+        >
+          Reject
+        </ion-button>
+      </ion-footer>
+    </ion-card>
+  </ion-list>
+</ion-content>

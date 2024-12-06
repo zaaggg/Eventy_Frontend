@@ -1,0 +1,125 @@
+.image-upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ccc; /* Light border */
+    background-color: #f9f9f9; /* Soft background */
+    width: 160px; /* Slightly larger for emphasis */
+    height: 160px;
+    margin: 1.5rem auto;
+    border-radius: 50%; /* Fully rounded for a circular look */
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+  
+    &:hover {
+      border-color: #3b5998; /* Change border color on hover */
+      background-color: #f0f4f8; /* Softer background hover effect */
+      transform: scale(1.05); /* Slight scale effect on hover */
+    }
+  
+    ion-icon {
+      color: #888;
+      font-size: 2.5rem; /* Bigger icon */
+      transition: color 0.3s ease; /* Smooth color transition */
+    }
+  
+    p {
+      margin: 0;
+      color: #888;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  
+
+    }
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure the image fits within the circle */
+      border-radius: 50%; /* Ensure image stays rounded */
+    }
+  }
+  
+  /* Form Styling */
+  form {
+    background-color: white; /* Clean white form background */
+    border-radius: 16px; /* Rounded corners for a modern look */
+    margin: 0 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Light shadow for elevation */
+  
+    ion-item {
+      --background: transparent;
+      --border-color: #e0e0e0; /* Soft input borders */
+      margin-bottom: 1.2rem;
+      border-radius: 8px;
+  
+      ion-label {
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: #555; /* Slightly darker label color */
+      }
+  
+      ion-input,
+      ion-select {
+        font-size: 1rem;
+        color: #333; /* Neutral text color */
+      }
+  
+      &:focus-within {
+        --border-color: #3b5998; /* Highlight border on focus */
+        --color: #3b5998;
+      }
+    }
+  
+    ion-button {
+      width: 100%;
+      --background: #3b5998; /* Cool blue button */
+      --border-radius: 12px;
+      --color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        --background: #2a4272; /* Slightly darker blue on hover */
+      }
+    }
+  }
+  
+  /* Add smooth transitions for everything */
+  :host *,
+  :host *::before,
+  :host *::after {
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive Styling */
+  @media screen and (max-width: 768px) {
+    .image-upload-container {
+      width: 140px;
+      height: 140px;
+    }
+  
+    form {
+      margin: 0 1rem;
+      padding: 1rem;
+    }
+  }
+  
+  ion-item ion-label {
+    font-size: 14px; // Adjust font size as needed
+  }
+  
+  ion-label[slot="start"], ion-label[slot="end"] {
+    flex-grow: 1;
+    height: 1px;
+  }
+  
