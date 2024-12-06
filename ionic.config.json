@@ -1,0 +1,7 @@
+{
+  "name": "Eventy_Frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
